@@ -27,7 +27,8 @@ const submit = () => {
 }
 </script>
 
-<template>
+<template >
+
     <GuestLayout title="Log in">
         <ValidationErrors class="mb-4" />
 
@@ -35,7 +36,9 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+
+        <div>
+            <form @submit.prevent="submit">
             <div class="grid gap-6">
                 <div class="space-y-2">
                     <Label for="email" value="Email" />
@@ -83,5 +86,9 @@ const submit = () => {
                 </p>
             </div>
         </form>
+        </div>
+
+
+
     </GuestLayout>
 </template>

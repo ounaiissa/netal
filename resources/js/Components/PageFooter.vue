@@ -22,7 +22,7 @@ import { HeartIcon } from '@heroicons/vue/solid'
                 target="_blank"
                 class="text-blue-600 hover:underline"
             >
-               ounaissa - imane
+               ounaissa FARROUG
             </a>
         </p>
     </footer>

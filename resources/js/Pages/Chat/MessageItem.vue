@@ -8,6 +8,11 @@
 
 <script>
     export default{
-        props: ['message'],
+        props: ['message', 'currentRoom'],
+        created() {
+        console.log(this.message.user.name);
+
+    },
     }
+
 </script>

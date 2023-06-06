@@ -1,8 +1,4 @@
-<script setup>
-import AuthenticatedLayout from '@/Layouts/Authenticated.vue'
-import Button from '@/Components/Button.vue'
-import { GithubIcon } from '@/Components/Icons/brands'
-</script>
+
 
 <template>
 
@@ -12,6 +8,8 @@ import { GithubIcon } from '@/Components/Icons/brands'
                 <h2 class="text-xl font-semibold leading-tight">
                     Dashboard
                 </h2>
+                <!-- <div>{{ auth.user.userType }}</div> -->
+                <!-- <div>{{ getUserType() }}</div> -->
 
 
             </div>
@@ -22,3 +20,48 @@ import { GithubIcon } from '@/Components/Icons/brands'
         </div>
     </AuthenticatedLayout>
 </template>
+<script setup>
+import { usePage } from '@inertiajs/inertia-vue3'
+import AuthenticatedLayout from '@/Layouts/Authenticated.vue'
+
+
+
+const { props } = usePage()
+const { auth } = props
+// const isUserType = (userType) => {
+//     console.log(form.userType);
+// //   return auth.user && auth.user.userType === userType
+// }
+</script>
+
+<script>
+import { usePage } from '@inertiajs/inertia-vue3'
+
+const { props } = usePage()
+const { auth } = props
+export default {
+  props: {
+    auth: {
+      type: Object,
+      required: true
+    }
+  },
+  setup(props) {
+    const { auth } = props
+
+    // Do any additional setup or logic here
+
+    const getUserType = () => {
+      if (auth && auth.user) {
+        return auth.user.userType;
+      }
+      return '';
+    }
+
+    return {
+      getUserType
+    }
+  }
+}
+
+</script>

@@ -47,6 +47,10 @@ Route::get('/chat', function () {
     return \Inertia\Inertia::render('Chat/ChatContainer');
 })->middleware(['auth', 'verified'])->name('chat');
 
+Route::get('/private', function () {
+    return \Inertia\Inertia::render('Chat/PrivateChat');
+})->middleware(['auth', 'verified'])->name('private');
+
 // Route::get('/chat/room', function () {
 //     return \Inertia\Inertia::render('Chat/ChatRoomSelection');
 // })->middleware(['auth', 'verified'])->name('room');

@@ -13,13 +13,20 @@ const form = useForm({
     email: '',
     password: '',
     password_confirmation: '',
+    userType: '',
     terms: false,
 })
 
 const submit = () => {
     form.post(route('register'), {
+
         onFinish: () => form.reset('password', 'password_confirmation'),
-    })
+
+        data: {
+            userType: form.userType,
+        },
+    });
+    console.log(form.userType);
 }
 </script>
 
@@ -47,6 +54,17 @@ const submit = () => {
                         </template>
                         <Input withIcon id="email" type="email" class="block w-full" placeholder="Email" v-model="form.email" required autocomplete="username" />
                     </InputIconWrapper>
+                </div>
+
+
+                <div class="space-y-2">
+                    <Label for="userType" value="User Function" />
+                    <select @input="form.userType = $event.target.value" id="userType" v-model="form.userType" class="block w-full py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring focus:ring-blue-1 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1 dark:text-gray-300 dark:focus:ring-offset-dark-eval-1">
+                        <option value="company">Company</option>
+                        <option value="developer">Developer</option>
+                        <option value="designer">Designer</option>
+                    </select>
+
                 </div>
 
                 <div class="space-y-2">

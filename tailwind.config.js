@@ -26,6 +26,7 @@ module.exports = {
                 },
                 blue:{
                     '1': '#1C4EFE',
+                    '2': '#1b3ebb'
                 }
             },
         },

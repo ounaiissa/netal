@@ -37,11 +37,11 @@ import { TemplateIcon } from '@heroicons/vue/outline'
                 />
             </template>
 
-            <SidebarCollapsibleItem
+            <!-- <SidebarCollapsibleItem
                 :href="route('components.buttons')"
                 title="Buttons"
                 :active="route().current('components.buttons')"
-            />
+            /> -->
 
 
             <SidebarCollapsibleItem

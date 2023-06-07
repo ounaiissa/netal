@@ -3,10 +3,7 @@
 import { Head, Link } from '@inertiajs/inertia-vue3'
 import { Link as InertiaLink } from '@inertiajs/inertia-vue3';
 import PageFooter from '@/Components/PageFooter.vue'
-// import { useVuetify } from 'vuetify';
-// import 'vuetify/dist/vuetify.min.css';
-
-// const vuetify = useVuetify()
+// import { VBtn } from 'vuetify/components';
 
 components: {
   InertiaLink
@@ -119,6 +116,9 @@ defineProps({
             <button class="mt-10 ml-10 common-btn">Get started</button>
         </div>
 
+        <v-btn color="primary">
+            Button
+        </v-btn>
     </div>
 
 

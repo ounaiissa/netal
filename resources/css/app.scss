@@ -8,7 +8,7 @@
     background-color: transparent !important;
 }
 
-
+// buttons
 .common-btn{
     display: flex;
     /* flex-direction: column; */
@@ -30,6 +30,9 @@ border-radius: 2px;
     border: solid 1px #FFFFFF;
 }
 
+
+// spans & titles
+
 .common-span{
     display: flex;
     /* flex-direction: column; */
@@ -47,6 +50,25 @@ border-radius: 2px;
 color: #000000;
 }
 
+
+.title-blue{
+    font-size: 49px;
+    font-weight: 700;
+    line-height: 50px;
+    color:  #1B73F8;
+
+}
+
+.title-blue-md{
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 50px;
+    color:  #1B73F8;
+
+}
+
+
+// main container
 .main-container-1{
     // background-image: url("https://s3-alpha-sig.figma.com/img/e727/bfc0/9822cee7c94a7891a98177f6e1317e40?Expires=1685923200&Signature=LzHwZAoGAxm7J9KgF5BbseT8M~AJdPKWghaenZkpgemV0RdY4Srh21A7opWTXttN~eYcp9cflNxPbpvDlraU1zg5MohyUHvF3ZxNpgJFDPpgnbPBgk7es~umTqohyJfYNhSxzQji5NRXQNqT1qncmApFMNVklqfv14T5JXFA7DECnRLI1cNWolLqJBhpObAcBsPEaIDxNKTA4Unk4ciInanVFm4oKbohaotcwZKU9YWLN61hf56ZYL7lEACmkrHwlTZc0syjm8sqko1M2uaUBYivNIwVa~DZeocLa3hoqMxUQHSvng0jbqtX4GzAmBauxyeWDLxbi-jLpXDSL6jH7A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
     background-size: cover;

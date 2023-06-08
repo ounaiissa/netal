@@ -3,7 +3,7 @@
 import { Head, Link } from '@inertiajs/inertia-vue3'
 import { Link as InertiaLink } from '@inertiajs/inertia-vue3';
 import PageFooter from '@/Components/PageFooter.vue'
-// import { VBtn } from 'vuetify/components';
+
 
 components: {
   InertiaLink
@@ -117,8 +117,9 @@ defineProps({
         </div>
 
         <v-btn color="primary">
-            Button
+            test vuetify
         </v-btn>
+
     </div>
 
 

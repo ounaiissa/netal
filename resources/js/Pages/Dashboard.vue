@@ -17,28 +17,48 @@
 
         <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
             You're logged in!
+
+            <!-- <div>
+        <ul>
+          <li v-for="userType in userTypes" :key="userType.id">{{ userType }}</li>
+        </ul>
+      </div> -->
+
+      <div>
+        <!-- <ul>
+            <li v-for="type in userType" :key="type">{{ type }}</li>
+        </ul> -->
+        <p>Current user type: {{ userType }}</p>
+      </div>
         </div>
     </AuthenticatedLayout>
 </template>
 <script setup>
 import { usePage } from '@inertiajs/inertia-vue3'
 import AuthenticatedLayout from '@/Layouts/Authenticated.vue'
+import axios from 'axios';
 
 
-
-const { props } = usePage()
-const { auth } = props
+// const { props } = usePage()
+// const { auth } = props
 // const isUserType = (userType) => {
 //     console.log(form.userType);
 // //   return auth.user && auth.user.userType === userType
+// }
+
+// const getUserType = () => {
+//   if (auth && auth.user) {
+//     return auth.user.userType
+//   }
+//   return ''
 // }
 </script>
 
 <script>
 import { usePage } from '@inertiajs/inertia-vue3'
-
-const { props } = usePage()
-const { auth } = props
+import { reactive, onMounted } from 'vue'
+// const { props } = usePage()
+// const { auth } = props
 export default {
   props: {
     auth: {
@@ -46,21 +66,39 @@ export default {
       required: true
     }
   },
-  setup(props) {
-    const { auth } = props
+  data() {
+  return {
+    userType: ''
+  };
+},
 
-    // Do any additional setup or logic here
 
-    const getUserType = () => {
-      if (auth && auth.user) {
-        return auth.user.userType;
-      }
-      return '';
-    }
+//   mounted() {
+//   axios.get('/api/users')
+//     .then(response => {
+//       this.userType = response.data.map(item => item.userType);
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// }
+mounted() {
+    axios.get('/api/users')
+      .then(response => {
+        // const currentUser =  this.auth.user.id;
+        // this.userType = response.data.find(user => user.id === this.auth.user.id)?.userType ?? '';
+        const currentUser = response.data.find(user => user.id === this.auth.user.id);
+        console.log(response.data);
 
-    return {
-      getUserType
-    }
+        console.log(this.auth.user.id);
+        console.log(currentUser);
+        if (currentUser) {
+          this.userType = currentUser.userType;
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 }
 

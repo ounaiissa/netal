@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +30,23 @@ Route::get('/', function () {
 
 
 
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/dashboard', [PortfolioController::class, 'index'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard.index');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+}, [PortfolioController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+
+Route::post('/dashboard', [PortfolioController::class, 'store'])->middleware(['auth', 'verified'])->name('portfolio.store');
+
+//Route::post('/dashboard', [DashboardController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -54,6 +70,9 @@ Route::get('/private', function () {
 Route::get('/portfolio', function () {
     return \Inertia\Inertia::render('portfolio/PortfolioInput');
 })->middleware(['auth', 'verified'])->name('portfolio');
+
+
+
 
 // Route::get('/chat/room', function () {
 //     return \Inertia\Inertia::render('Chat/ChatRoomSelection');

@@ -49,6 +49,11 @@ import { TemplateIcon } from '@heroicons/vue/outline'
                 title="Message"
                 :active="route().current('chat')"
             />
+            <SidebarCollapsibleItem
+                :href="route('portfolio')"
+                title="project"
+                :active="route().current('portfolio')"
+            />
 
 
         </SidebarCollapsible>

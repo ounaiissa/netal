@@ -1,5 +1,4 @@
 
-
 <template>
 
     <AuthenticatedLayout title="Dashboard">
@@ -14,101 +13,110 @@
             </div>
         </template>
 
-        <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-            <h1 class="title-blue">Overview</h1>
-            <P class="">Welcome back!</P>
 
+        <div v-if="this.auth.user.userType === 'designer'|| this.auth.user.userType === 'developer'" class="py-4">
+            <p>Current user type: {{ this.auth.user.userType }}</p>
+            <div class=" p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+                <h1 class="title-blue py-2">Overview</h1>
+                <p class="pb-3">Welcome back, your progress is really good. keep it up!</p>
 
+                <div class="grid">
 
-      <div>
-        <!-- <ul>
-            <li v-for="type in userType" :key="type">{{ type }}</li>
-        </ul> -->
-        <p>Current user type: {{ this.auth.user.userType }}</p>
-        <v-card class="w-[300px] h-[250px] flex item-center" text="" variant="outlined">
+                        <v-card class="w-[280px] h-[230px] d-flex align-center justify-center" text="" variant="outlined" style="border-color: #1B73F8;">
+                            <a :href="route('portfolio')" class="title-blue-md">ADD PROJECT</a>
+                            <v-icon color="#1B73F8">mdi-plus</v-icon>
 
-            <v-icon icon="fas fa-plus" />
-            <a :href="route('portfolio')" class="title-blue-md">ADD PROJECT</a>
-        </v-card>
-      </div>
+                        </v-card>
+
+                         <!-- Display portfolios in v-cards -->
+                        <!-- <div v-for="portfolio in portfolios" :key="portfolio.id">
+                            <v-card class="portfolio-card">
+                            <img :src="portfolio.image" alt="Uploaded Image" />
+                            <div class="portfolio-details" v-if="showName === portfolio.id">
+                                <h3>{{ portfolio.title }}</h3>
+                                <p>{{ portfolio.description }}</p>
+                                <a :href="portfolio.link" class="portfolio-link">View Project</a>
+                            </div>
+                            </v-card>
+                        </div> -->
+
+                        <div v-if="portfolios.length > 0">
+                <div v-for="portfolio in portfolios" :key="portfolio.id">
+                    <h3>{{ portfolio.title }}</h3>
+                    <p>{{ portfolio.description }}</p>
+                    <div v-if="portfolio.images.length > 0">
+                    <ul>
+                        <li v-for="image in portfolio.images" :key="image.id">
+                        <img :src="image.fullImagePath" alt="Portfolio Image" />
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+                <div v-else>
+                <p>No portfolios found.</p>
+                </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <div v-if="this.auth.user.userType === 'designer'|| this.auth.user.userType === 'developer'">
-            <h1>heey you're a designer or a developer</h1>
 
+        <!-- here dashboard company -->
 
-        </div>
-        <!-- <div v-else-if="this.auth.user.userType === 'developer'">
-            <h1>heey you're a developer</h1>
-        </div> -->
         <div v-else-if="this.auth.user.userType === 'company'">
             <h1>heey you're a company</h1>
         </div>
     </AuthenticatedLayout>
 </template>
+
+
+
+
+<style scoped>
+.v-card--outlined {
+  border-color: #1B73F8;
+}
+</style>
+
+
+
 <script setup>
-import { usePage } from '@inertiajs/inertia-vue3'
 import AuthenticatedLayout from '@/Layouts/Authenticated.vue'
-import axios from 'axios';
 
 
-// const { props } = usePage()
-// const { auth } = props
-// const isUserType = (userType) => {
-//     console.log(form.userType);
-// //   return auth.user && auth.user.userType === userType
-// }
 
-// const getUserType = () => {
-//   if (auth && auth.user) {
-//     return auth.user.userType
-//   }
-//   return ''
-// }
 </script>
 
 <script>
-import { usePage } from '@inertiajs/inertia-vue3'
-import { reactive, onMounted } from 'vue'
-// const { props } = usePage()
-// const { auth } = props
+// import { usePage } from '@inertiajs/inertia-vue3'
+// import { reactive, onMounted } from 'vue'
+import axios from 'axios';
+
+
 export default {
+
   props: {
     auth: {
       type: Object,
       required: true
-    }
+    },
+
   },
   data() {
   return {
-    userType: ''
+    userType: '',
+    files: [],
+    imageData: localStorage.getItem('uploadedImage'),
+    portfolios: [],
   };
 },
-
-
-//   mounted() {
-//   axios.get('/api/users')
-//     .then(response => {
-//       this.userType = response.data.map(item => item.userType);
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// }
 mounted() {
     axios.get('/api/users')
       .then(response => {
         const currentUser =  this.auth.user.id;
-        // this.userType = response.data.find(user => user.id === this.auth.user.id)?.userType ?? '';
-        // const currentUser = response.data.find(user => user.id === this.auth.user.id);
-        // const currentUser = response.data.find(user => user.id === this.auth.user.id);
-
-
-        // console.log(response.data);
-
-        // console.log(this.auth.user.id);
         console.log(this.auth.user.userType);
-        // console.log(currentUser);
-        // console.log(currentUser.userType);
         if (currentUser) {
           this.userType = currentUser.userType;
         }
@@ -116,6 +124,36 @@ mounted() {
       .catch(error => {
         console.log(error);
       });
+
+
+    //   axios.get('/api/portfolios')
+    //     .then(response => {
+    //         console.log(response.data);
+    //         this.portfolios = response.data.title.map((title, index) => ({
+    //             title,
+    //             description: response.data.description[index],
+    //             images: [{ fullImagePath: response.data.imagesPath[index].path }],
+    //         }));
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //     });
+
+
+    axios.get('/api/portfolios')
+        .then(response => {
+            console.log(response.data);
+            this.portfolios = response.data.title.map((title, index) => ({
+                title,
+                description: response.data.description[index],
+                images: [{ fullImagePath: response.data.imagesPath[index] }],
+            }));
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+
   }
 }
 

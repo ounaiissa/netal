@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PortfolioController;
+use App\Models\Portfolio;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/users', [UserController::class, 'getData']);
+Route::get('/portfolios', [PortfolioController::class, 'getData']);

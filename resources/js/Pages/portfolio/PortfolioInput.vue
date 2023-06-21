@@ -7,7 +7,7 @@
           </h2> -->
           <v-sheet class="mx-auto">
             <h1 class="title-blue">Upload a new project</h1>
-            <v-form @submit.prevent="submitPortfolio"  method="post">
+            <v-form ref="portfolioForm" @submit.prevent="submitPortfolio"  method="post">
 
                 <div>
                     <label for="title">Title:</label>
@@ -32,7 +32,7 @@
                         <ul>
 
                             <li v-for="file in files" :key="file">
-                                <img :src="file" alt="Uploaded Image" />
+                                <img :src="file.preview" alt="Uploaded Image" />
                                 <v-icon small @click="removeFile(file)">mdi-close</v-icon>
                             </li>
 
@@ -73,10 +73,12 @@
       },
         isDragOver: false,
         files: JSON.parse(localStorage.getItem('uploadedFiles') || '[]') ,
+        portfolios: [],
       };
     },
     methods: {
         submitPortfolio() {
+
             console.log("called")
             const formData = new FormData();
             formData.append('title', this.portfolio.title);
@@ -93,6 +95,7 @@
 
             axios.post('/dashboard', formData)
             .then(response => {
+                this.isLoading = false;
                 console.log(response.data);
                 const newPortfolio = {
                 title: this.portfolio.title,
@@ -106,18 +109,22 @@
             this.portfolio.description = '';
             this.files = [];
             localStorage.removeItem('uploadedFiles');
+            this.$inertia.visit('/dashboard');
             })
             .catch(error => {
+                this.isLoading = false;
                 console.error(error);
-                console.error(error.response.data);
+                // console.error(error.response.data);
             });
-  },
+            },
     handleFileUpload(event) {
         console.log('handleFileUpload called');
-        const fileList = this.$refs.fileInput.files;
+        // const fileList = this.$refs.fileInput.files;
+        const fileList = event.target.files;
     //   const fileList = event.target.files;
       for (let i = 0; i < fileList.length; i++) {
         const file = fileList[i];
+        // const fileURL = URL.createObjectURL(file);
         file.preview = URL.createObjectURL(file);
         this.files.push(file);
         const reader = new FileReader();
@@ -125,7 +132,7 @@
           const imageData = e.target.result;
           file.preview = imageData;
           this.files.splice(i, 1, file);
-          this.files.push(imageData);
+        //   this.files.push(imageData);
           localStorage.setItem('uploadedFiles', JSON.stringify(this.files));
         };
         reader.readAsDataURL(file);

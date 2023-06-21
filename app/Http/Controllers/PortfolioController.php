@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Portfolio;
 use App\Models\PortfolioImage;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Redirect;
+// use Illuminate\Http\Response;
+
+
 
 
 class PortfolioController extends Controller
@@ -14,8 +20,8 @@ class PortfolioController extends Controller
     public function index()
     {
         $portfolios = Portfolio::where('user_id', auth()->user()->id)->get();
-        return view('dashboard', ['portfolios' => $portfolios]);
-        // return response()->json($portfolios);
+        // return view('dashboard', ['portfolios' => $portfolios]);
+        return response()->json($portfolios);
     }
 
     public function store(Request $request)
@@ -51,8 +57,13 @@ class PortfolioController extends Controller
         }
 
 
-        return redirect('/dashboard');
+        // return redirect('/dashboard');
+        return Response::json(['message' => 'Portfolio created successfully']);
+        // ->header('Location', '/dashboard')
+        // ->header('Access-Control-Allow-Origin', '*')
+        // ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     }
+
 
 
 
@@ -62,6 +73,7 @@ class PortfolioController extends Controller
         $description = Portfolio::select('description')->get();
         $imagesPath = PortfolioImage::select('path')->get();
 
+
         $data = [
             'title' => $title,
             'description' => $description,
@@ -69,29 +81,14 @@ class PortfolioController extends Controller
         ];
 
         return response()->json($data);
-        // return response()->json($title . $description . $ImagesPath);
+    }
 
-
-        // $portfolios = Portfolio::with('images')->where('user_id', auth()->user()->id)->get();
-
-        // return response()->json($portfolios);
-
-        // $user = Auth::user();
-        // if (!$user) {
-        //     // Handle unauthorized access
-        //     return response()->json(['error' => 'Unauthorized'], 401);
-        // }
-        // $portfolios = Portfolio::with('images')->where('user_id', $user->id)->get();
-        // $title = $portfolios->pluck('title');
-        // $description = $portfolios->pluck('description');
-        // $imagesPath = $portfolios->flatMap(function ($portfolio) {
-        //     return $portfolio->images->pluck('path');
-        // });
-
-        // return response()->json([
-        //     'title' => $title,
-        //     'description' => $description,
-        //     'imagesPath' => $imagesPath,
-        // ]);
+    public function getImage($image)
+    {
+        $path = storage_path('app/public/portfolio_images/' . $image);
+        if (file_exists($path)) {
+            return response()->file($path);
+        }
+        abort(404);
     }
 }

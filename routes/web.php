@@ -7,6 +7,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PortfolioController;
+use App\Models\Portfolio;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,23 +33,23 @@ Route::get('/', function () {
 
 
 
+
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::get('/dashboard', [PortfolioController::class, 'index'])
+// }, [PortfolioController::class, 'index'])
 //     ->middleware(['auth', 'verified'])
-//     ->name('dashboard.index');
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-}, [PortfolioController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+//     ->name('dashboard');
 
+Route::get('/dashboard', function () {
+    $portfolios = Portfolio::where('user_id', auth()->user()->id)->get();
+    return Inertia::render('Dashboard', ['portfolios' => $portfolios]);
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/dashboard', [PortfolioController::class, 'store'])->middleware(['auth', 'verified'])->name('portfolio.store');
 
 //Route::post('/dashboard', [DashboardController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard.store');
+
+Route::get('/portfolioImages/{image}', [PortfolioController::class, 'getImage'])->middleware(['auth', 'verified'])->name('portfolioImages.getImage');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

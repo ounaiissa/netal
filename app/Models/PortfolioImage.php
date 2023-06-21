@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class PortfolioImage extends Model
 {
     use HasFactory;
@@ -18,4 +19,17 @@ class PortfolioImage extends Model
     {
         return asset('storage/' . $this->path);
     }
+
+
+
+
+
+    // public function getFullImagePathAttribute()
+    // {
+    //     return asset('storage/' . $this->attributes['path']);
+    // }
+    // public function getFullImagePathAttribute()
+    // {
+    //     return asset('storage/' . str_replace('public/', '', $this->path));
+    // }
 }

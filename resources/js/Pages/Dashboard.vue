@@ -125,29 +125,18 @@ mounted() {
         console.log(error);
       });
 
-
-    //   axios.get('/api/portfolios')
-    //     .then(response => {
-    //         console.log(response.data);
-    //         this.portfolios = response.data.title.map((title, index) => ({
-    //             title,
-    //             description: response.data.description[index],
-    //             images: [{ fullImagePath: response.data.imagesPath[index].path }],
-    //         }));
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     });
-
-
     axios.get('/api/portfolios')
         .then(response => {
             console.log(response.data);
             this.portfolios = response.data.title.map((title, index) => ({
-                title,
-                description: response.data.description[index],
-                images: [{ fullImagePath: response.data.imagesPath[index] }],
+                // title,
+                // description: response.data.description[index],
+                title: Object.values(title).join(" "),
+                description: Object.values(response.data.description[index]).join(" "),
+                images: [{ fullImagePath: `/portfolioImages/${response.data.imagesPath[index].path.split('/').pop()}` }],
             }));
+
+
         })
         .catch(error => {
             console.log(error);
@@ -156,5 +145,6 @@ mounted() {
 
   }
 }
+
 
 </script>

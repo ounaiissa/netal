@@ -67,6 +67,32 @@ color: #000000;
 
 }
 
+.title-blue-md:hover{
+    color:#1c3baa;
+}
+
+// cards
+
+.portfolio-card{
+    width: 340px;
+    height: 260px;
+}
+
+
+.portfolio-card:hover{
+
+    position: relative;
+    z-index: 1;
+}
+
+.portfolio-card:hover .portfolio-detail{
+    display: block;
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(128, 128, 128, 0.24);
+    height: 100%;
+    width: 100%;
+}
 
 // main container
 .main-container-1{

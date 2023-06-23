@@ -23,3 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/users', [UserController::class, 'getData']);
 Route::get('/portfolios', [PortfolioController::class, 'getData']);
+Route::delete('/portfolios/{id}', [PortfolioController::class, 'deletePortfolio']);
+Route::put('/portfolios/{id}', [PortfolioController::class, 'edit']);
+// Route::put('/portfolios/{id}', [PortfolioController::class, 'editPortfolio']);

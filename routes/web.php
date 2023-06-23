@@ -74,6 +74,9 @@ Route::get('/portfolio', function () {
     return \Inertia\Inertia::render('portfolio/PortfolioInput');
 })->middleware(['auth', 'verified'])->name('portfolio');
 
+Route::get('portfolios', function () {
+    return \Inertia\Inertia::render('discover/portfolios/otherPortfolio');
+})->middleware(['auth', 'verified'])->name('portfolios');
 
 
 

@@ -49,7 +49,6 @@ class PortfolioController extends Controller
 
             foreach ($images as $image) {
                 $path = $image->store('public/portfolio_images');
-                // $portfolio->images()->create(['path' => $path]);
                 $portfolioImage = new PortfolioImage();
                 $portfolioImage->path = $path;
                 $portfolio->images()->save($portfolioImage);
@@ -69,12 +68,14 @@ class PortfolioController extends Controller
 
     public function getData()
     {
+        $id = Portfolio::select('id')->get();
         $title = Portfolio::select('title')->get();
         $description = Portfolio::select('description')->get();
         $imagesPath = PortfolioImage::select('path')->get();
 
 
         $data = [
+            'id' => $id,
             'title' => $title,
             'description' => $description,
             'imagesPath' => $imagesPath,
@@ -90,5 +91,104 @@ class PortfolioController extends Controller
             return response()->file($path);
         }
         abort(404);
+    }
+
+
+    public function deletePortfolio($id)
+    {
+        try {
+            $portfolio = Portfolio::findOrFail($id);
+
+            if ($portfolio->images) {
+                foreach ($portfolio->images as $image) {
+                    Storage::delete($image->path);
+                    $image->delete();
+                }
+            }
+
+            $portfolio->delete();
+
+            return response()->json('Portfolio item deleted successfully.');
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+
+
+    // public function edit(Request $request, $id)
+    // {
+    //     $portfolio = Portfolio::findOrFail($id);
+    //     $portfolio->title = $request->input('title');
+    //     $portfolio->description = $request->input('description');
+
+
+    //     if ($request->hasFile('images')) {
+    //         $images = $request->file('images');
+
+    //         // Delete old images
+    //         if ($portfolio->images) {
+    //             foreach ($portfolio->images as $image) {
+    //                 Storage::delete($image->path);
+    //                 $image->delete();
+    //             }
+    //         }
+
+    //         // Save new images
+    //         $newImages = [];
+    //         foreach ($request->file('images') as $image) {
+    //             $path = $image->store('public/portfolio_images');
+    //             $portfolioImage = new PortfolioImage();
+    //             $portfolioImage->path = $path;
+    //             $portfolio->images()->save($portfolioImage);
+
+    //             // Collect the new portfolio images
+    //             $newImages[] = $portfolioImage;
+    //         }
+
+    //         $portfolio->images = $newImages;
+    //     }
+
+    //     $portfolio->save();
+
+    //     // return response()->json(['Portfolio item updated successfully']);
+    //     return response()->json(['portfolio' => $portfolio]);
+    // }
+
+    public function edit(Request $request, $id)
+    {
+        try {
+            $portfolio = Portfolio::findOrFail($id);
+            $portfolio->title = $request->input('title');
+            $portfolio->description = $request->input('description');
+
+
+            if ($request->hasFile('images')) {
+                return response()->json('true');
+                // Delete old images
+                if ($portfolio->images) {
+                    foreach ($portfolio->images as $image) {
+                        Storage::delete($image->path);
+                        $image->delete();
+                    }
+                }
+
+                $newImages = [];
+                foreach ($request->file('images') as $uploadedFile) {
+                    $path = $uploadedFile->store('public/portfolio_images');
+                    $portfolioImage = new PortfolioImage();
+                    $portfolioImage->path = $path;
+                    $newImages[] = $portfolioImage;
+                }
+
+                $portfolio->images()->saveMany($newImages);
+            }
+
+            $portfolio->save();
+
+            return response()->json('Portfolio item updated successfully.');
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }

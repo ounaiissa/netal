@@ -76,6 +76,7 @@ color: #000000;
 .portfolio-card{
     width: 340px;
     height: 260px;
+
 }
 
 
@@ -83,6 +84,7 @@ color: #000000;
 
     position: relative;
     z-index: 1;
+    cursor: pointer;
 }
 
 .portfolio-card:hover .portfolio-detail{
@@ -92,6 +94,75 @@ color: #000000;
     background-color: rgba(128, 128, 128, 0.24);
     height: 100%;
     width: 100%;
+}
+
+// users talent
+.user-card{
+
+    width: 280px;
+height: 360px;
+flex-shrink: 0;
+border-radius: 129px;
+// background: url(<path-to-image>), #fff 100% / cover no-repeat;
+
+}
+
+.user-card img{
+    width: 129px;
+    height: 129px;
+    border-radius: 50%;
+    background-color: #1B73F8;
+    margin: auto;
+    @apply mt-4 p-1;
+}
+
+
+.custom-button{
+    background-color: #1C4EFE !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  text-transform: capitalize !important;
+}
+
+.user-card h1{
+    color: #000;
+    display: flex;
+text-align: justify;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+font-family: Inter;
+font-weight: 500;
+@apply pt-1;
+}
+
+.user-card h5{
+    color: #000;
+    display: flex;
+text-align: justify;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+font-family: Inter;
+font-weight: 400;
+@apply pt-1;
+}
+
+.user-card p{
+    color: #000;
+    display: flex;
+text-align: center;
+align-items: center;
+justify-content: center;
+font-size: 14px;
+font-family: Inter;
+font-weight: 400;
+@apply p-2;
+}
+
+
+.search-btn{
+
 }
 
 // main container

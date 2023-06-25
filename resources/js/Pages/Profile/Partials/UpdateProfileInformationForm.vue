@@ -15,6 +15,9 @@ const user = usePage().props.value.auth.user
 const form = useForm({
     name: user.name,
     email: user.email,
+    title: user.title,
+    about: user.about,
+    budget: user.budget,
 })
 </script>
 
@@ -87,6 +90,50 @@ const form = useForm({
                     A new verification link has been sent to your email address.
                 </div>
             </div>
+
+            <div>
+    <Label for="title" value="Title" />
+
+    <Input
+        id="title"
+        type="text"
+        class="mt-1 block w-full"
+        v-model="form.title"
+        autofocus
+        autocomplete="off"
+    />
+
+    <InputError class="mt-2" :message="form.errors.title" />
+</div>
+
+<div>
+    <Label for="about" value="About" />
+
+    <Input
+        id="about"
+        type="text"
+        class="mt-1 block w-full"
+        v-model="form.about"
+        autocomplete="off"
+    />
+
+    <InputError class="mt-2" :message="form.errors.about" />
+</div>
+
+<div>
+    <Label for="budget" value="Budget" />
+
+    <Input
+        id="budget"
+        type="number"
+        class="mt-1 block w-full"
+        v-model="form.budget"
+        autocomplete="off"
+    />
+
+    <InputError class="mt-2" :message="form.errors.budget" />
+</div>
+
 
             <div class="flex items-center gap-4">
                 <Button :disabled="form.processing">Save</Button>

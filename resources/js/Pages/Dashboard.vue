@@ -143,8 +143,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/Authenticated.vue'
 
-
-
 </script>
 
 <script>
@@ -158,7 +156,7 @@ export default {
   props: {
     auth: {
       type: Object,
-      required: true
+      required: true,
     },
 
   },

@@ -78,6 +78,10 @@ Route::get('portfolios', function () {
     return \Inertia\Inertia::render('discover/portfolios/otherPortfolio');
 })->middleware(['auth', 'verified'])->name('portfolios');
 
+Route::get('talents', function () {
+    return \Inertia\Inertia::render('discover/netals/talents');
+})->middleware(['auth', 'verified'])->name('talents');
+
 
 
 // Route::get('/chat/room', function () {

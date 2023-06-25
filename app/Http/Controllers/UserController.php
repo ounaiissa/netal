@@ -9,7 +9,9 @@ class UserController extends Controller
 {
     public function getData()
     {
-        $userType = User::select('userType')->get();
-        return response()->json($userType);
+        // $userType = User::select('userType')->get();
+        // return response()->json($userType);
+        $users = User::all();
+        return response()->json($users);
     }
 }

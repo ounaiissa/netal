@@ -10,6 +10,8 @@ use App\Models\PortfolioImage;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\User;
+
 // use Illuminate\Http\Response;
 
 
@@ -69,16 +71,20 @@ class PortfolioController extends Controller
     public function getData()
     {
         $id = Portfolio::select('id')->get();
+        $user_id = Portfolio::select('user_id')->get();
         $title = Portfolio::select('title')->get();
         $description = Portfolio::select('description')->get();
         $imagesPath = PortfolioImage::select('path')->get();
 
+        $user = User::select('name')->find($user_id);
 
         $data = [
             'id' => $id,
             'title' => $title,
             'description' => $description,
             'imagesPath' => $imagesPath,
+            'user_id' => $user_id,
+            'user_name' => $user,
         ];
 
         return response()->json($data);

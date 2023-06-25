@@ -54,6 +54,11 @@ import { TemplateIcon } from '@heroicons/vue/outline'
                 title="project"
                 :active="route().current('portfolio')"
             />
+            <SidebarCollapsibleItem
+                :href="route('talents')"
+                title="talents"
+                :active="route().current('talents')"
+            />
 
             <SidebarCollapsibleItem
                 :href="route('portfolios')"

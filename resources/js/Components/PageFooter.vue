@@ -3,6 +3,7 @@ import { HeartIcon } from '@heroicons/vue/solid'
 </script>
 
 <template>
+
     <footer class="flex-shrink-0 px-6 py-4">
         <p
             class="flex items-center justify-center gap-1 text-sm text-gray-600  dark:text-gray-400"
@@ -15,7 +16,7 @@ import { HeartIcon } from '@heroicons/vue/solid'
                 <span className="sr-only">Love</span>
             </span>
 
-            <span>by</span>
+            <!-- <span>by</span>
 
             <a
                 href=""
@@ -23,7 +24,8 @@ import { HeartIcon } from '@heroicons/vue/solid'
                 class="text-blue-600 hover:underline"
             >
                ounaissa - imane
-            </a>
+            </a> -->
         </p>
     </footer>
 </template>
+

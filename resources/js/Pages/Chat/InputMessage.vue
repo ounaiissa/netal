@@ -11,7 +11,7 @@
                 if(this.message == ''){
                     return;
                 }
-
+                window.location.reload();
                 axios.post('/chat/room/' + this.room.id + '/message', {
                     message: this.message
                 })
@@ -19,10 +19,14 @@
                     if(response.status == 201){
                         this.message = '';
                         this.$emit('messagesent');
+                        // this.getMessages();
+
                     }
+
                 })
                 .catch( error =>{
-                    console.log( error)
+                    console.log( error);
+                    console.log(error.response);
                 })
 
                 // console.log(this.room.id);

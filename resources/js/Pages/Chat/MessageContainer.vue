@@ -10,11 +10,14 @@
 
 </template>
 
-<script setup>
-import MessageItem from './MessageItem.vue';</script>
-<script>
 
+<script>
+import axios from 'axios';
+import MessageItem from './MessageItem.vue';
     export default{
+        components:{
+            MessageItem,
+        },
         props: ['messages']
     }
 </script>

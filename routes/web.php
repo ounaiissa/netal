@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\JobBoardController;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
 
@@ -47,9 +48,17 @@ Route::get('/dashboard', function () {
 
 Route::post('/dashboard', [PortfolioController::class, 'store'])->middleware(['auth', 'verified'])->name('portfolio.store');
 
-//Route::post('/dashboard', [DashboardController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard.store');
-
 Route::get('/portfolioImages/{image}', [PortfolioController::class, 'getImage'])->middleware(['auth', 'verified'])->name('portfolioImages.getImage');
+
+
+Route::post('/jobboard', [JobBoardController::class, 'store'])->middleware(['auth', 'verified'])->name('jobboard.store');
+Route::get('/jobboards', [JobBoardController::class, 'getData'])->middleware(['auth', 'verified'])->name('jobboard.get');
+
+Route::get('proposals', function () {
+    return \Inertia\Inertia::render('discover/jobboards/proposals');
+})->middleware(['auth', 'verified'])->name('proposals');
+
+// Route::get('/proposals/{jobBoardId}', [JobBoardController::class, 'show'])->name('proposals');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -70,9 +79,9 @@ Route::get('/private', function () {
     return \Inertia\Inertia::render('Chat/PrivateChat');
 })->middleware(['auth', 'verified'])->name('private');
 
-Route::get('/portfolio', function () {
-    return \Inertia\Inertia::render('portfolio/PortfolioInput');
-})->middleware(['auth', 'verified'])->name('portfolio');
+Route::get('/project', function () {
+    return \Inertia\Inertia::render('projects/CreateProject');
+})->middleware(['auth', 'verified'])->name('project');
 
 Route::get('portfolios', function () {
     return \Inertia\Inertia::render('discover/portfolios/otherPortfolio');
@@ -81,6 +90,10 @@ Route::get('portfolios', function () {
 Route::get('talents', function () {
     return \Inertia\Inertia::render('discover/netals/talents');
 })->middleware(['auth', 'verified'])->name('talents');
+
+Route::get('alljobboards', function () {
+    return \Inertia\Inertia::render('discover/jobboards/jobboards');
+})->middleware(['auth', 'verified'])->name('alljobboards');
 
 
 

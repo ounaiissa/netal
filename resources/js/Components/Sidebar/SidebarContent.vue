@@ -2,9 +2,14 @@
 import PerfectScrollbar from '@/Components/PerfectScrollbar.vue'
 import SidebarLink from '@/Components/Sidebar/SidebarLink.vue'
 import { DashboardIcon } from '@/Components/Icons/outline'
+import { MessageIcon } from '@/Components/Icons/outline'
+import { TalentIcon } from '@/Components/Icons/outline'
+import { ProjectIcon } from '@/Components/Icons/outline'
+import { PortfolioIcon } from '@/Components/Icons/outline'
 import SidebarCollapsible from '@/Components/Sidebar/SidebarCollapsible.vue'
 import SidebarCollapsibleItem from '@/Components/Sidebar/SidebarCollapsibleItem.vue'
 import { TemplateIcon } from '@heroicons/vue/outline'
+
 </script>
 
 <template>
@@ -26,7 +31,82 @@ import { TemplateIcon } from '@heroicons/vue/outline'
             </template>
         </SidebarLink>
 
-        <SidebarCollapsible
+
+        <SidebarLink
+            title="add a project"
+            :href="route('project')"
+            :active="route().current('project')"
+        >
+            <template #icon>
+                <ProjectIcon
+                    class="flex-shrink-0 w-6 h-6"
+                    aria-hidden="true"
+                />
+            </template>
+        </SidebarLink>
+        <SidebarLink
+            title="talents"
+            :href="route('talents')"
+            :active="route().current('talents')"
+        >
+            <template #icon>
+                <TalentIcon
+                    class="flex-shrink-0 w-6 h-6"
+                    aria-hidden="true"
+                />
+            </template>
+        </SidebarLink>
+        <SidebarLink
+            title="job boards"
+            :href="route('alljobboards')"
+            :active="route().current('alljobboards')"
+        >
+            <template #icon>
+                <DashboardIcon
+                    class="flex-shrink-0 w-6 h-6"
+                    aria-hidden="true"
+                />
+            </template>
+        </SidebarLink>
+        <SidebarLink
+            title="portfolios"
+            :href="route('portfolios')"
+            :active="route().current('portfolios')"
+        >
+            <template #icon>
+                <PortfolioIcon
+                    class="flex-shrink-0 w-6 h-6"
+                    aria-hidden="true"
+                />
+            </template>
+        </SidebarLink>
+        <SidebarLink
+            title="Message"
+            :href="route('private')"
+            :active="route().current('private')"
+        >
+            <template #icon>
+                <MessageIcon
+                    class="flex-shrink-0 w-6 h-6"
+                    aria-hidden="true"
+                />
+            </template>
+        </SidebarLink>
+
+        <SidebarLink
+            title="Rooms"
+            :href="route('chat')"
+            :active="route().current('chat')"
+        >
+            <template #icon>
+                <MessageIcon
+                    class="flex-shrink-0 w-6 h-6"
+                    aria-hidden="true"
+                />
+            </template>
+        </SidebarLink>
+
+        <!-- <SidebarCollapsible
             title="Components"
             :active="route().current('components.*')"
         >
@@ -35,29 +115,32 @@ import { TemplateIcon } from '@heroicons/vue/outline'
                     class="flex-shrink-0 w-6 h-6"
                     aria-hidden="true"
                 />
-            </template>
+            </template> -->
+
+
+
 
             <!-- <SidebarCollapsibleItem
-                :href="route('components.buttons')"
-                title="Buttons"
-                :active="route().current('components.buttons')"
-            /> -->
-
-
-            <SidebarCollapsibleItem
                 :href="route('chat')"
                 title="Message"
                 :active="route().current('chat')"
             />
             <SidebarCollapsibleItem
-                :href="route('portfolio')"
-                title="project"
-                :active="route().current('portfolio')"
+
+                :href="route('project')"
+                title="add project"
+                :active="route().current('project')"
             />
             <SidebarCollapsibleItem
                 :href="route('talents')"
                 title="talents"
                 :active="route().current('talents')"
+            />
+
+            <SidebarCollapsibleItem
+                :href="route('alljobboards')"
+                title="job boards"
+                :active="route().current('alljobboards')"
             />
 
             <SidebarCollapsibleItem
@@ -67,7 +150,7 @@ import { TemplateIcon } from '@heroicons/vue/outline'
             />
 
 
-        </SidebarCollapsible>
+        </SidebarCollapsible> -->
 
         <!-- Examples -->
         <!--

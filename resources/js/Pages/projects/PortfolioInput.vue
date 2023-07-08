@@ -10,15 +10,15 @@
             <v-form ref="portfolioForm" @submit.prevent="submitPortfolio"  method="post">
 
                 <div>
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" id="title" v-model="portfolio.title" required>
+                    <label class="selected-spam px-5 py-7" for="title">Title:</label>
+                    <v-text-field type="text" name="title" id="title" v-model="portfolio.title" required> </v-text-field>
                 </div>
                 <div>
-                    <label for="description">Description:</label>
-                    <textarea name="description" id="description" v-model="portfolio.description" required></textarea>
+                    <label class="selected-spam px-5 py-7" for="description">Description:</label>
+                    <v-text-field name="description" id="description" v-model="portfolio.description"  required></v-text-field>
                 </div>
             <div>
-                <label for="images">Images:</label>
+                <label class="selected-spam px-5 py-7" for="images">Images:</label>
                 <input name="images" id="images" ref="fileInput"  class="h-40 p-3" type="file" multiple @change="handleFileUpload" />
                 <div
                     class="drop-area"

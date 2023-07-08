@@ -1,7 +1,7 @@
 <template>
     <AuthenticatedLayout title="chat">
         <template #header>
-            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div class=" flex-col md:flex-row md:items-center md:justify-between">
                 <h2 class="text-xl font-semibold leading-tight">
                     <ChatRoomSelection
                         v-if="currentRoom.id"
@@ -13,8 +13,8 @@
 
             </div>
         </template>
-        <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-            <MessageContainer :messages="messages.reverse()" />
+        <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1 w-[1000px]">
+            <MessageContainer :messages="messages.reverse()"  />
             <InputMessage :room="currentRoom" v-on:messagesent="getMessages()" />
 
 
@@ -22,25 +22,28 @@
     </AuthenticatedLayout>
 </template>
 
-<script setup>
-import AuthenticatedLayout from '@/Layouts/Authenticated.vue'
+
+
+<script>
+import AuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import MessageContainer from './MessageContainer.vue';
 import InputMessage from './InputMessage.vue';
 import ChatRoomSelection from './ChatRoomSelection.vue';
-
-</script>
-
-<script>
-
-
-    export default{
-        data: function() {
-            return {
-                chatRooms: [],
-                currentRoom: [],
-                messages: []
-            }
-        },
+import axios from 'axios';
+ export default{
+    components: {
+    AuthenticatedLayout,
+    MessageContainer,
+    InputMessage,
+    ChatRoomSelection,
+  },
+  data() {
+    return {
+      chatRooms: [],
+      currentRoom: [],
+      messages: [],
+    };
+  },
         watch:{
             currentRoom( val, oldVal){
                 if( oldVal.id){

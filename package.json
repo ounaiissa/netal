@@ -8,11 +8,14 @@
     "@inertiajs/inertia": "^0.11.1",
     "@inertiajs/inertia-vue3": "^0.6.0",
     "@inertiajs/progress": "^0.2.7",
-    "@vue/cli-service": "^5.0.8",
+    "@vue/cli-service": "^4.5.19",
     "@vue/runtime-dom": "^3.3.4",
     "laravel-echo": "^1.15.1",
     "pusher-js": "^8.0.2",
-    "vuetify": "^3.3.3"
+    "vue-carousel": "^0.18.0",
+    "vue-router": "^4.2.2",
+    "vuetify": "^3.3.3",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@alpinejs/collapse": "^3.4.2",

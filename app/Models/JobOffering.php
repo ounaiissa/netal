@@ -16,6 +16,15 @@ class JobOffering extends Model
 
     public function interestedUsers()
     {
-        return $this->hasMany(InterestedUser::class);
+        return $this->hasMany(InterestedUser::class, 'job_offering_id');
     }
+
+
+    protected $fillable = [
+        'company_id',
+        'job_title',
+        'description',
+        'budget',
+        'due_date',
+    ];
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col- items-center">
+    <div class="flex flex-col-1 items-center">
         <div class="font-bold text-xl ml-7">
             {{ selected.name }} Chat
         </div>
@@ -10,7 +10,7 @@
                 v-model="selected"
 
                 @change="$emit('roomchanged', selected)"
-                class="ml-[1080px] text-gray bg-slate-800 border-none rounded"
+                class="ml-[600px] text-gray border rounded"
             >
             <!-- <template v-slot:item="{ item }">
                     {{ item.name }}
@@ -30,11 +30,7 @@
 </template>
 
 <script>
-
-
-
-
-    export default{
+  export default{
         props: ['rooms', 'currentRoom'],
         data: function(){
             return {

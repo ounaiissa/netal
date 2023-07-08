@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\JobBoardController;
 use App\Models\Portfolio;
 
 /*
@@ -22,7 +23,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/users', [UserController::class, 'getData']);
+Route::get('/users/{id}', [UserController::class, 'getUserData']);
 Route::get('/portfolios', [PortfolioController::class, 'getData']);
 Route::delete('/portfolios/{id}', [PortfolioController::class, 'deletePortfolio']);
 Route::put('/portfolios/{id}', [PortfolioController::class, 'edit']);
 // Route::put('/portfolios/{id}', [PortfolioController::class, 'editPortfolio']);
+Route::get('/jobboards', [JobBoardController::class, 'getData']);
+Route::put('/jobboards/{id}', [JobBoardController::class, 'update']);
+
+Route::post('/interested-users', [JobBoardController::class, 'storeInterestedUser']);
+Route::get('/jobboards/{jobboardId}/interested-users', [JobBoardController::class, 'getInterestedUsers']);
+
+
+
+// Route::get('/jobboards/{jobBoardId}', [JobBoardController::class, 'show'])->name('proposals');

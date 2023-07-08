@@ -68,27 +68,68 @@ class PortfolioController extends Controller
 
 
 
+    // public function getData()
+    // {
+    //     $id = Portfolio::select('id')->get();
+    //     $user_id = Portfolio::select('user_id')->get();
+    //     $title = Portfolio::select('title')->get();
+    //     $description = Portfolio::select('description')->get();
+    //     $imagesPath = PortfolioImage::select('path')->get();
+
+    //     $user = User::select('name')->find($user_id);
+
+
+    //     $data = [
+    //         'id' => $id,
+    //         'title' => $title,
+    //         'description' => $description,
+    //         'imagesPath' => $imagesPath,
+    //         'user_id' => $user_id,
+    //         'user_name' => $user,
+    //     ];
+
+    //     return response()->json($data);
+    // }
+
     public function getData()
     {
-        $id = Portfolio::select('id')->get();
-        $user_id = Portfolio::select('user_id')->get();
-        $title = Portfolio::select('title')->get();
-        $description = Portfolio::select('description')->get();
-        $imagesPath = PortfolioImage::select('path')->get();
+        $portfolios = Portfolio::select('id', 'title', 'description', 'user_id')->get();
 
-        $user = User::select('name')->find($user_id);
+        $portfoliosWithImages = $portfolios->map(function ($portfolio) {
+            $images = PortfolioImage::where('portfolio_id', $portfolio->id)->pluck('path')->toArray();
+            $imagesPath = $images ? $images : null;
 
-        $data = [
-            'id' => $id,
-            'title' => $title,
-            'description' => $description,
-            'imagesPath' => $imagesPath,
-            'user_id' => $user_id,
-            'user_name' => $user,
-        ];
+            return [
+                'id' => $portfolio->id,
+                'title' => $portfolio->title,
+                'description' => $portfolio->description,
+                'imagesPath' => $imagesPath,
+                'user_id' => $portfolio->user_id,
+            ];
+        });
+
+        $userIds = $portfoliosWithImages->pluck('user_id')->toArray();
+        $users = User::whereIn('id', $userIds)->select('id', 'name')->get();
+        $userNames = $users->pluck('name', 'id');
+
+        $data = $portfoliosWithImages->map(function ($portfolio) use ($userNames) {
+            $userName = $userNames[$portfolio['user_id']] ?? null;
+
+            return [
+                'id' => $portfolio['id'],
+                'title' => $portfolio['title'],
+                'description' => $portfolio['description'],
+                'imagesPath' => $portfolio['imagesPath'],
+                'user_id' => $portfolio['user_id'],
+                'user_name' => $userName,
+            ];
+        });
 
         return response()->json($data);
     }
+
+
+
 
     public function getImage($image)
     {

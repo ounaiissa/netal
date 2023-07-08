@@ -1,13 +1,13 @@
 <template>
     <AuthenticatedLayout>
-      <h1>talents</h1>
-      <div class="d-flex items-center px-2 my-5 bg-white w-[370px]">
+      <h1 class="title-blue">talents</h1>
+      <div class="d-flex items-center px-2 my-5 bg-white w-[370px]" style="border-radius: 19px; ">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="Basic / Search">
         <path id="Vector" d="M21 21L16.6569 16.6569M16.6569 16.6569C18.1046 15.2091 19 13.2091 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19C13.2091 19 15.2091 18.1046 16.6569 16.6569Z" stroke="black" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </g>
         </svg>
-      <input style="border-radius: 29px; " type="text" v-model="searchTerm" placeholder="Search by title" />
+      <input  type="text" v-model="searchTerm" placeholder="Search by title" />
       <button style="border-left: 1px solid ; font-size: 18px; font-weight: 500;" class=" pl-4 text-blue-1 hover:text-blue-2" @click="searchUsers">Search</button>
       </div>
 

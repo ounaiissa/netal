@@ -8,6 +8,10 @@
     background-color: transparent !important;
 }
 
+*,  body {
+    font-family: "Inter", sans-serif;
+  }
+
 // buttons
 .common-btn{
     display: flex;
@@ -50,12 +54,27 @@ border-radius: 2px;
 color: #000000;
 }
 
+.common-span-2{
+
+    color: #1c3baa;
+
+    font-style: Semi Bold;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    /* Line height: 142%; */
+}
+
+.common-span-2:hover{
+    color: #000;
+}
 
 .title-blue{
-    font-size: 49px;
+    font-size: 44px;
     font-weight: 700;
     line-height: 50px;
     color:  #1B73F8;
+    @apply py-3;
 
 }
 
@@ -70,6 +89,8 @@ color: #000000;
 .title-blue-md:hover{
     color:#1c3baa;
 }
+
+
 
 // cards
 
@@ -117,6 +138,109 @@ border-radius: 129px;
 }
 
 
+// jobboards
+.project-title{
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    @apply py-2;
+}
+
+.project-desc{
+    color: #000;
+    font-family: Inter;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: justify;
+    @apply py-2 px-4;
+}
+
+.project-details{
+    color: #1C74F4;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+@apply py-2;
+}
+
+.job-card{
+    margin: auto;
+    @apply my-3  w-[1100px];
+}
+
+.alljob-card{
+    width: 300px;
+    height: 100%;
+    border: #1C4EFE solid 2px  !important;
+}
+
+.selected-job-card{
+width: 1100px;
+@apply my-4 px-9;
+}
+.selected-job-card-spam{
+    color: #000;
+    font-family: Inter;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    @apply py-3;
+}
+
+.proposals-card{
+border: solid 1px #1C4EFE !important;
+@apply  w-[1100px] my-4;
+}
+.proposals-card img{
+    width: 100px;
+    height: 100px;
+    background-color: #1c3baa;
+    border-radius: 50%;
+}
+
+.proposals-card p{
+    color: #000;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+@apply py-3;
+}
+
+.selected-spam{
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+.selected-spam-2{
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: normal;
+    @apply py-2;
+}
+
+.form-label{
+
+}
+
+// buttons
 .custom-button{
     background-color: #1C4EFE !important;
   color: #fff !important;
@@ -160,25 +284,46 @@ font-weight: 400;
 @apply p-2;
 }
 
+// navbar
+.navbar--active {
+    background-color: #fff;
 
+    position: fixed;
+    top: 0;
+    z-index: 100;
+  }
+  .navbar--active .common-span:hover{
+      color: #1c3baa;
+  }
+  .navbar--active .common-span{
+      color: #000;
+  }
+
+
+  .navbar--transparent {
+    background-color: transparent;
+  }
+//
 .search-btn{
 
 }
 
 // main container
+
 .main-container-1{
     // background-image: url("https://s3-alpha-sig.figma.com/img/e727/bfc0/9822cee7c94a7891a98177f6e1317e40?Expires=1685923200&Signature=LzHwZAoGAxm7J9KgF5BbseT8M~AJdPKWghaenZkpgemV0RdY4Srh21A7opWTXttN~eYcp9cflNxPbpvDlraU1zg5MohyUHvF3ZxNpgJFDPpgnbPBgk7es~umTqohyJfYNhSxzQji5NRXQNqT1qncmApFMNVklqfv14T5JXFA7DECnRLI1cNWolLqJBhpObAcBsPEaIDxNKTA4Unk4ciInanVFm4oKbohaotcwZKU9YWLN61hf56ZYL7lEACmkrHwlTZc0syjm8sqko1M2uaUBYivNIwVa~DZeocLa3hoqMxUQHSvng0jbqtX4GzAmBauxyeWDLxbi-jLpXDSL6jH7A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 830px;
-    margin: 0;
-    padding: 0;
-    /* display: flex;
-    flex-direction: row; */
-
+    height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    // z-index: 1;
 }
-
+// .main-content{
+//     z-index: 1;
+// }
 .main-content h1{
     font-size: 76px;
     line-height: 90px;
@@ -195,3 +340,152 @@ font-weight: 400;
 }
 
 /* private chat */
+
+// search welcome
+.main-container-2 {
+
+background-color: #1B73F8;
+height: 270px;
+    // margin-left: 23px;
+    // margin-right: 29px;
+    // margin-top:-330px;
+  }
+  .search-icon {
+    margin-right: 10px;
+  }
+
+  .main-container-2  .search-bar{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 900px;
+// flex-shrink: 0;
+    margin: auto;
+    background-color: #fff;
+    @apply p-3 ;
+
+}
+.main-container-2  p{
+    text-align: justify;
+    color: #fff;
+    font-family: Inter;
+    font-weight: 500;
+line-height: normal;
+width: 1000px;
+margin: auto;
+font-size: 21px;
+}
+
+.welcome-span{
+    color: rgba(0, 0, 0, 0.60);
+    text-align: center;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: auto;
+}
+
+// jobboards welcome
+.jobTilte{
+    text-align: center;
+    font-family: Inter;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 70px;
+
+}
+
+// how it works
+.step{
+    width: 260px;
+    height: 200px;
+box-shadow: #777 1px 2px 2px ;
+}
+
+// footer
+
+.footer {
+    background-color: #1C74F4;
+    color: #fff;
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .footer__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .footer__logo img {
+    height: 40px;
+  }
+
+  .footer__tagline {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+
+  .footer__social-media {
+    display: flex;
+  }
+
+  .footer__social-media a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    color: #fff;
+    background-color: #555;
+    border-radius: 50%;
+    text-decoration: none;
+  }
+
+  .footer__social-media a:hover {
+    background-color: #777;
+  }
+
+  .footer__menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .footer__menu a {
+    font-size: 1rem;
+    margin: 10px;
+    text-decoration: none;
+    color: #fff;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .footer__menu a:hover {
+    opacity: 0.7;
+  }
+
+  .footer__help {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .footer__help a {
+    font-size: 1rem;
+    margin: 10px;
+    text-decoration: none;
+    color: #fff;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .footer__help a:hover {
+    opacity: 0.7;
+  }

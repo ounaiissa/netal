@@ -30,6 +30,7 @@ const submit = () => {
 <template >
 
     <GuestLayout title="Log in">
+
         <ValidationErrors class="mb-4" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
@@ -38,7 +39,14 @@ const submit = () => {
 
 
         <div>
-            <form @submit.prevent="submit">
+            <div style="color: #1C74F4; text-align: center;
+font-family: Inter;
+font-size: 35px;
+font-style: normal;
+font-weight: 700;
+line-height: 44px;">Welcome back</div>
+
+            <form @submit.prevent="submit" class="">
             <div class="grid gap-6">
                 <div class="space-y-2">
                     <Label for="email" value="Email" />

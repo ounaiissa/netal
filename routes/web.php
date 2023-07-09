@@ -10,7 +10,7 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\JobBoardController;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +22,17 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('/storage/users-avatar/{filename}', function ($filename) {
+    $path = 'users-avatar/' . $filename;
+    if (Storage::disk('public')->exists($path)) {
+        return response()->file(storage_path('app/public/' . $path));
+    } else {
+        abort(404);
+    }
+})->where('filename', '.*');
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -90,6 +101,10 @@ Route::get('portfolios', function () {
 Route::get('talents', function () {
     return \Inertia\Inertia::render('discover/netals/talents');
 })->middleware(['auth', 'verified'])->name('talents');
+
+Route::get('userDeatails', function () {
+    return \Inertia\Inertia::render('discover/all/userDeatails');
+})->middleware(['auth', 'verified'])->name('userDeatails');
 
 Route::get('alljobboards', function () {
     return \Inertia\Inertia::render('discover/jobboards/jobboards');

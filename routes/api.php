@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\JobBoardController;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Portfolio;
 
 /*
@@ -17,6 +18,15 @@ use App\Models\Portfolio;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::get('/storage/users-avatar/{filename}', function ($filename) {
+    $path = 'users-avatar/' . $filename;
+    if (Storage::disk('public')->exists($path)) {
+        return response()->file(storage_path('app/public/' . $path));
+    } else {
+        abort(404);
+    }
+})->where('filename', '.*');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

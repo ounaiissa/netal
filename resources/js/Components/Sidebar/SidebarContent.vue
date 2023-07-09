@@ -80,77 +80,35 @@ import { TemplateIcon } from '@heroicons/vue/outline'
                 />
             </template>
         </SidebarLink>
-        <SidebarLink
+
+
+
+        <SidebarCollapsible
             title="Message"
-            :href="route('private')"
-            :active="route().current('private')"
-        >
-            <template #icon>
-                <MessageIcon
-                    class="flex-shrink-0 w-6 h-6"
-                    aria-hidden="true"
-                />
-            </template>
-        </SidebarLink>
-
-        <SidebarLink
-            title="Rooms"
-            :href="route('chat')"
-            :active="route().current('chat')"
-        >
-            <template #icon>
-                <MessageIcon
-                    class="flex-shrink-0 w-6 h-6"
-                    aria-hidden="true"
-                />
-            </template>
-        </SidebarLink>
-
-        <!-- <SidebarCollapsible
-            title="Components"
             :active="route().current('components.*')"
         >
             <template #icon>
-                <TemplateIcon
+                <MessageIcon
                     class="flex-shrink-0 w-6 h-6"
                     aria-hidden="true"
                 />
-            </template> -->
+            </template>
 
 
-
-
-            <!-- <SidebarCollapsibleItem
+            <SidebarCollapsibleItem
+                :href="route('private')"
+                title="Private chat"
+                :active="route().current('private')"
+            />
+            <SidebarCollapsibleItem
                 :href="route('chat')"
-                title="Message"
+                title="Room chat"
                 :active="route().current('chat')"
             />
-            <SidebarCollapsibleItem
-
-                :href="route('project')"
-                title="add project"
-                :active="route().current('project')"
-            />
-            <SidebarCollapsibleItem
-                :href="route('talents')"
-                title="talents"
-                :active="route().current('talents')"
-            />
-
-            <SidebarCollapsibleItem
-                :href="route('alljobboards')"
-                title="job boards"
-                :active="route().current('alljobboards')"
-            />
-
-            <SidebarCollapsibleItem
-                :href="route('portfolios')"
-                title="Portfolios"
-                :active="route().current('portfolios')"
-            />
 
 
-        </SidebarCollapsible> -->
+
+        </SidebarCollapsible>
 
         <!-- Examples -->
         <!--

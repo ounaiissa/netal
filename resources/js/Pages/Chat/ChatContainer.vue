@@ -106,3 +106,48 @@ import axios from 'axios';
             },
     };
 </script>
+<style scoped>
+.chat-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.chat-container .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-container .message-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.chat-container .input-message {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.chat-container .input-message input[type="text"] {
+  flex-grow: 1;
+  outline: none;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.25rem;
+}
+
+.chat-container .input-message button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #7289da;
+  color: white;
+  cursor: pointer;
+}
+</style>

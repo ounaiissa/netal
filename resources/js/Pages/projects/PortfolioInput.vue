@@ -6,32 +6,33 @@
             Upload a new project
           </h2> -->
           <v-sheet class="mx-auto">
-            <h1 class="title-blue">Upload a new project</h1>
-            <v-form ref="portfolioForm" @submit.prevent="submitPortfolio"  method="post">
+            <h1 class="title-blue ml-3">Upload a new project</h1>
+            <v-form ref="portfolioForm" @submit.prevent="submitPortfolio"  method="post" class="ml-9">
 
-                <div>
-                    <label class="selected-spam px-5 py-7" for="title">Title:</label>
-                    <v-text-field type="text" name="title" id="title" v-model="portfolio.title" required> </v-text-field>
+                <div class="my-5">
+                    <label class="project-label px-5 py-7" for="title">Title:</label> <br>
+                    <input class="project-input w-[823px]" type="text" name="title" id="title" v-model="portfolio.title" required />
                 </div>
-                <div>
-                    <label class="selected-spam px-5 py-7" for="description">Description:</label>
-                    <v-text-field name="description" id="description" v-model="portfolio.description"  required></v-text-field>
+                <div class="my-5">
+                    <label class="project-label  px-5 py-7" for="description">Description:</label><br>
+                    <input class="project-input w-[823px] h-[300px]" name="description" id="description" v-model="portfolio.description"  required/>
                 </div>
-            <div>
-                <label class="selected-spam px-5 py-7" for="images">Images:</label>
-                <input name="images" id="images" ref="fileInput"  class="h-40 p-3" type="file" multiple @change="handleFileUpload" />
+            <div class="my-5">
+                <label class="project-label px-5 py-7" for="images">Images:</label>
+                <input  class=" p-3" name="images" id="images" ref="fileInput"  type="file" multiple @change="handleFileUpload" />
                 <div
-                    class="drop-area"
+                    class="drop-area project-files  "
                     :class="{ 'drag-over': isDragOver }"
                     @dragenter="handleDragEnter"
                     @dragover="handleDragOver"
                     @dragleave="handleDragLeave"
                     @drop="handleDrop"
                 >
+                <div class="file-preview-container">
                     <div v-if="files.length > 0">
                         <ul>
 
-                            <li v-for="file in files" :key="file">
+                            <li v-for="file in files" :key="file.key">
                                 <img :src="file.preview" alt="Uploaded Image" />
                                 <v-icon small @click="removeFile(file)">mdi-close</v-icon>
                             </li>
@@ -44,6 +45,8 @@
                     <span v-if="isDragOver">Drop the files here</span>
                     <span v-else>Drag and drop files here or click to select files</span>
                     </div>
+                </div>
+
                 </div>
             </div>
 
@@ -58,6 +61,7 @@
   <script>
   import AuthenticatedLayout from '@/Layouts/Authenticated.vue';
   import axios from 'axios';
+  import { router } from '@inertiajs/vue3';
 
 
   export default {
@@ -110,6 +114,8 @@
             this.files = [];
             localStorage.removeItem('uploadedFiles');
             this.$inertia.visit('/dashboard');
+            // window.location.reload();
+
             })
             .catch(error => {
                 this.isLoading = false;
@@ -117,28 +123,50 @@
                 // console.error(error.response.data);
             });
             },
-    handleFileUpload(event) {
-        console.log('handleFileUpload called');
-        // const fileList = this.$refs.fileInput.files;
-        const fileList = event.target.files;
-    //   const fileList = event.target.files;
-      for (let i = 0; i < fileList.length; i++) {
-        const file = fileList[i];
-        // const fileURL = URL.createObjectURL(file);
-        file.preview = URL.createObjectURL(file);
-        this.files.push(file);
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const imageData = e.target.result;
-          file.preview = imageData;
-          this.files.splice(i, 1, file);
-        //   this.files.push(imageData);
-          localStorage.setItem('uploadedFiles', JSON.stringify(this.files));
-        };
-        reader.readAsDataURL(file);
-        console.log(file.name);
-      }
-    },
+            handleFileUpload(event) {
+  const newFiles = Array.from(event.target.files);
+
+  for (let i = 0; i < newFiles.length; i++) {
+    const newFile = newFiles[i];
+    newFile.preview = URL.createObjectURL(newFile);
+    newFile.key = new Date().getTime(); // Generate a unique key for each file
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      newFile.preview = e.target.result;
+      this.files.push(newFile);
+      localStorage.setItem('uploadedFiles', JSON.stringify(this.files));
+    };
+    reader.readAsDataURL(newFile);
+    console.log(newFile.name);
+  }
+},
+
+    // handleFileUpload(event) {
+    //     console.log('handleFileUpload called');
+    //     const fileList = event.target.files;
+
+    //     // this.files = [...this.files, ...newFiles];
+    //     // const newFiles = Array.from(event.target.files);
+    //     // this.files.push(...newFiles);
+    //   for (let i = 0; i < fileList.length; i++) {
+    //     const file = fileList[i];
+    //     // const file = newFiles[i];
+    //     // const fileURL = URL.createObjectURL(file);
+    //     file.preview = URL.createObjectURL(file);
+    //     this.files.push(file);
+    //     const reader = new FileReader();
+    //     reader.onload = (e) => {
+    //       const imageData = e.target.result;
+    //       file.preview = imageData;
+    //       this.files.splice(i, 1, file);
+    //     //   this.files.push(imageData);
+    //       localStorage.setItem('uploadedFiles', JSON.stringify(this.files));
+    //     };
+    //     reader.readAsDataURL(file);
+    //     console.log(file.name);
+    //   }
+    // },
       handleDragEnter(event) {
         event.preventDefault();
         event.stopPropagation();
@@ -181,8 +209,11 @@
     padding: 20px;
     text-align: center;
     cursor: pointer;
+    overflow: auto;
   }
-
+  .file-preview-container {
+  max-height: 200px;
+}
   .drag-over {
     background-color: #f0f0f0;
   }

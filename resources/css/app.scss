@@ -12,6 +12,35 @@
     font-family: "Inter", sans-serif;
   }
 
+
+//   steps
+.step-title{
+    border: 1px #F4F6FF solid;
+    color: #1C74F4;
+    text-align: center;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background-color:  #F4F6FF;
+
+    @apply p-4;
+}
+
+.step-text{
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.60);
+text-align: center;
+/* Body 14pt */
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+@apply py-5 px-2;
+}
+
 // buttons
 .common-btn{
     display: flex;
@@ -35,6 +64,18 @@ border-radius: 2px;
 }
 
 
+.icon-btn{
+    background-color:#1B73F8;
+
+    border-radius: 50%;
+    @apply p-2;
+}
+.icon-btn svg{
+    color: #fff !important;
+}
+.icon-btn:hover{
+    background-color: #1c3baa;
+}
 // spans & titles
 
 .common-span{
@@ -69,6 +110,8 @@ color: #000000;
     color: #000;
 }
 
+
+//  titles
 .title-blue{
     font-size: 44px;
     font-weight: 700;
@@ -141,8 +184,8 @@ color: #000000;
 // cards
 
 .portfolio-card{
-    width: 340px;
-    height: 260px;
+    width: 400px;
+    height: 300px;
 
 }
 
@@ -167,7 +210,7 @@ color: #000000;
 .user-card{
 
     width: 280px;
-height: 360px;
+height: 400px;
 flex-shrink: 0;
 border-radius: 129px;
 // background: url(<path-to-image>), #fff 100% / cover no-repeat;
@@ -185,6 +228,15 @@ border-radius: 129px;
 
 
 // jobboards
+
+.project-label{
+    color: #000;
+    font-family: Inter;
+font-size: 17px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
 .project-title{
     color: #000;
     font-family: Inter;
@@ -192,7 +244,7 @@ border-radius: 129px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    @apply py-2;
+    @apply py-3;
 }
 
 .project-desc{
@@ -218,14 +270,18 @@ line-height: normal;
 
 .job-card{
     margin: auto;
-    @apply my-3  w-[1100px];
+    border: 1px dashed rgba(28, 116, 244, 0.50) !important;
+// background: rgba(28, 116, 244, 0.02) ;
+    @apply my-3  w-[1000px];
 }
 
 .alljob-card{
-    width: 300px;
-    height: 100%;
+    // width: 400px ;
+    // height: 100%;
     border: #1C4EFE solid 2px  !important;
     border-radius: 0;
+
+    @apply w-[300px] h-full;
 }
 
 .selected-job-card{
@@ -283,8 +339,23 @@ line-height: normal;
     @apply py-2;
 }
 
-.form-label{
 
+
+
+
+// inputs
+.project-input{
+    border: 1px solid rgba(30, 30, 30, 0.20);
+    background-color: rgba(30, 30, 30, 0.03);
+    // @apply ;
+}
+
+.project-files{
+    border: 1px dashed rgba(30, 30, 30, 0.20);
+    background: rgba(30, 30, 30, 0.03);
+    width: 823px;
+height: 160px;
+flex-shrink: 0;
 }
 
 // buttons
@@ -294,7 +365,9 @@ line-height: normal;
   font-size: 14px !important;
   text-transform: capitalize !important;
 }
-
+.user-card{
+    // @apply h-full;
+}
 .user-card h1{
     color: #000;
     display: flex;
@@ -536,3 +609,121 @@ box-shadow: #777 1px 2px 2px ;
   .footer__help a:hover {
     opacity: 0.7;
   }
+
+//   responsive
+
+@media(max-width: 450px){
+    // .title-blue{
+    //     @apply text-center;
+    // }
+
+    .project-input{
+        @apply w-[300px];
+    }
+    .nun{
+        @apply block;
+    }
+    .mun{
+        @apply w-[300px];
+    }
+    .project-files{
+        @apply w-[300px];
+    }
+    .btn{
+        width: 200px !important;
+        // @apply w-[200px];
+    }
+
+    .job-card{
+        @apply w-[334px] ;
+    }
+    .job-card p{
+        font-size: 17px;
+    }
+    .job-card .chun{
+        @apply gap-1;
+       }
+       .selected-job-card{
+        @apply w-[400px] ;
+       }
+
+       .proposals-card{
+            @apply w-[400px] ;
+       }
+
+       .blun{
+        @apply block ml-5 ;
+       }
+
+       .portfolio{
+        @apply block ;
+       }
+
+       .chbun{
+        @apply block;
+       }
+
+       .main-container-1{
+        max-width:400px;
+       }
+
+       .main-container-1 .main-content p{
+font-size: 14px;
+text-align: center;
+width: 200px;
+       }
+       .main-container-1 .main-content h1{
+        font-size: 20px;
+        text-align: center;
+        line-height: normal;
+        width: 200px;
+               }
+
+       .main-container-1 .main-content v-btn{
+        display: none !important;
+       }
+
+       .search-bar{
+        max-width: 300px;
+       }
+       .main-container-2{
+        max-width:400px;
+        height: 700px ;
+       }
+
+       .main-container-2 p{
+        max-width:300px;
+
+       }
+
+       .jobBoards{
+        max-width:300px;
+       }
+
+       .jobTilte{
+        max-width: 200px;
+        font-size: 30px;
+        line-height: normal;
+       }
+
+       .talents{
+        max-width:300px;
+       }
+
+       .container{
+        max-width: 1000px;
+        font-size: 30px;
+        line-height: normal;
+       }
+
+       .portfolios{
+        max-width: 400px;
+       }
+.works{
+    height: 1100px;
+}
+       .step{
+        max-width: 400px;
+        display: block;
+       }
+}

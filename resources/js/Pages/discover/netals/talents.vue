@@ -16,11 +16,9 @@
         <path id="Vector" d="M21 21L16.6569 16.6569M16.6569 16.6569C18.1046 15.2091 19 13.2091 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19C13.2091 19 15.2091 18.1046 16.6569 16.6569Z" stroke="black" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </g>
     </svg>
-    <input type="text" v-model="searchTerm" placeholder="Search by title" class="search-input2" />
+    <input type="text" v-model="searchTerm" placeholder="Search by title or username" class="search-input2" />
     <button class="search-button2" @click="searchUsers">Search</button>
   </div>
-
-
 
       <div class="grid grid-cols-4 gap-2">
         <v-card v-for="user in displayedUsers" :key="user.id" class="user-card" text="" variant="outlined" style="border-color: #1B73F8; background-color: #ffffff4f;">
@@ -30,12 +28,12 @@
           <p>{{ user.about }}</p>
           <div class="d-flex justify-between mx-3 mt-3 items-center">
             <p>{{ user.budget }} $/hr</p>
-            <v-btn @click="openModal(user)" class="custom-button"> See more</v-btn>
+            <v-btn @click="openUserDetails(user.id)" class="custom-button"> See more</v-btn>
           </div>
         </v-card>
       </div>
 
-      <UserDetails v-if="selectedUser" :user="selectedUser" :auth="auth" @close="selectedUser = null" />
+      <UserDetails v-if="showUserDetails" :userId="selectedUser" @close="selectedUser = null"  />
 
     </AuthenticatedLayout>
   </template>
@@ -50,6 +48,10 @@
   <script>
 import { ref } from 'vue'
 import axios from 'axios'
+import { useRouter } from 'vue-router';
+import { visit } from '@inertiajs/inertia-vue3';
+
+
 
 
 const users = ref([])
@@ -64,7 +66,7 @@ const searchTriggered = ref(false)
       type: Object,
       required: true,
     },
-
+    userId: null,
   },
     data() {
       return {
@@ -97,35 +99,84 @@ const searchTriggered = ref(false)
 
     },
     computed: {
+        showUserDetails() {
+    return this.selectedUser !== null;
+  },
         displayedUsers() {
       if (searchTriggered.value) {
         if (!searchTerm.value) {
           return users.value;
         }
-        console.log('users value form computed', users.value);
-        console.log('searchTerm value form computed', searchTerm.value);
+        // console.log('users value form computed', users.value);
+        // console.log('searchTerm value form computed', searchTerm.value);
 
         const searchTermLower = searchTerm.value.toLowerCase();
         console.log(searchTermLower);
-        return users.value.filter(user =>user.title && user.title.toLowerCase().includes(searchTermLower));
+
+       // return users.value.filter(user =>user.title && user.title.toLowerCase().includes(searchTermLower));
+
+       return users.value.filter(user =>
+  (user.title && user.title.toLowerCase().includes(searchTermLower)) ||
+  (user.name && user.name.toLowerCase().includes(searchTermLower))
+);
+
+
       }
 
       return users.value;
     },
 },
+
+
 methods: {
     getUserAvatarUrl(avatarFilename) {
     return `/storage/users-avatar/${avatarFilename}`;
   },
-  openModal(user) {
-    this.selectedUser = user;
+
+  openUserDetails(user) {
+  this.selectedUser = user;
+
+  this.$inertia.visit('/userDeatails', {
+  data: {
+    userId: user,
   },
+  props: {
+    userId: user,
+  },
+  preserveState: true,
+});
+
+  console.log('this si the selcetd user',this.selectedUser);
+  console.log('this si the  user',user);
+
+//   this.$router.push(`/user-details/${user.id}`);
+
+//   visit(`/user-details/${user.id}`)
+//   visit(route('userDetails', { id: user.id }));
+//   this.$router.push({ name: 'userDetails', params: { id: user.id } });
+// router.push({ name: 'userDetails', params: { id: user.id } });
+},
     searchUsers() {
         console.log('Search term:', searchTerm.value);
       searchTriggered.value = true;
 
     },
   },
+//   setup() {
+//   const router = useRouter();
 
+
+//   const openModal = (user) => {
+//     this.selectedUser = user;
+//     router.push(`/user-details/${user.id}`);
+//   };
+
+
+
+//   return {
+//     openModal,
+
+//   };
+// },
   }
   </script>

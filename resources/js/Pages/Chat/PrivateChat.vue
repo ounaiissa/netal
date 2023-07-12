@@ -3,7 +3,7 @@
 
 
         <div >
-            <iframe src="/chatify" frameborder="0"  class="w-full h-[120vh] mx-0"></iframe>
+            <iframe src="/chatify" frameborder="0"  class="w-full h-[90vh] mx-0"></iframe>
         </div>
      </AuthenticatedLayout>
 </template>

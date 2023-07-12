@@ -32,7 +32,7 @@
 
           <div class="d-flex justify-between mx-3 mt-3 items-center">
             <!-- <p>{{ interestedUser.user ? interestedUser.user.budget : 'Loading...' }} $/hr</p> -->
-            <v-btn @click="" class="custom-button">See more</v-btn>
+            <v-btn disabled @click="" class="custom-button">See more</v-btn>
           </div>
             </div>
           <p class="text-justify">{{ interestedUser.user ? interestedUser.user.about : 'Loading...' }}</p>
@@ -71,10 +71,6 @@
       required: false,
     },
 
-    // auth: {
-    //   type: Object,
-    //   required: true,
-    // },
   },
     data() {
       return {
@@ -95,6 +91,9 @@
 
 
     methods: {
+//         getUserAvatarUrl(avatarFilename) {
+//     return `/storage/users-avatar/${avatarFilename}`;
+//   },
       handleJobboardSelected(jobboardId) {
       this.selectedJobboardId = jobboardId;
     },
@@ -139,6 +138,7 @@
     },
 
 mounted() {
+
 
 
     // this.fetchInterestedUsers();

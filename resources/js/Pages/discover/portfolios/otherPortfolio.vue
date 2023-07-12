@@ -1,6 +1,6 @@
 <template>
     <AuthenticatedLayout>
-        <div v-if="portfolios.length > 0" class="grid grid-cols-3 gap-2 my-7">
+        <div v-if="portfolios.length > 0" class="portfolio grid grid-cols-3 gap-2 my-7">
 
                           <div v-for="portfolio in portfolios" :key="portfolio.id">
                             <v-card  class="portfolio-card  d-flex align-center justify-center" text="" variant="outlined" style="border-color: #1B73F8;">
@@ -27,12 +27,12 @@
 
 
           <!-- Modal component -->
-  <div v-if="selectedPortfolio" class="fixed inset-0 flex items-center justify-center z-50 ">
+  <div v-if="selectedPortfolio" class="fixed inset-0 flex items-center justify-center z-50">
     <div class="absolute inset-0 bg-gray-900 opacity-50"></div>
-    <div class="relative bg-white p-6">
+    <div class="relative bg-white p-11">
       <h3>{{ selectedPortfolio.title }}</h3>
       <p>{{ selectedPortfolio.description }}</p>
-      <p>Created by: {{ selectedPortfolio.user_name }}</p>
+      <p>Created by: <b>{{ selectedPortfolio.user_name }}</b></p>
       <div v-if="selectedPortfolio.images.length > 0">
         <ul>
           <li v-for="image in selectedPortfolio.images" :key="image.id">

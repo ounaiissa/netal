@@ -3,19 +3,22 @@ première version (non terminée)
 une application web conçue comme une plateforme pour les développeurs et les designers. Les utilisateurs peuvent créer des comptes, télécharger leur portfolio/CV, participer à des chatrooms publics ou privés spécifiques aux développeurs ou aux designers, et échanger des messages en privé. Cette plateforme vise également à aider les entreprises ou les agences digitales à trouver des développeurs ou des designers en leur permettant de publier leurs offres d'emploi, auxquelles les développeurs et designers peuvent postuler.
 
 
-![image](https://github.com/ounaiissa/netal/assets/92831062/c2a698d7-799f-4b95-b87c-b79022b64f39)
-![image](https://github.com/ounaiissa/netal/assets/92831062/7131a118-aaec-4d28-a00d-c7168ceede50)
-![image](https://github.com/ounaiissa/netal/assets/92831062/7d02d6d1-4ae6-4ddb-a7ab-ffa5a521d7e1)
-![image](https://github.com/ounaiissa/netal/assets/92831062/8cd03e85-fc7f-4d80-81a9-92f0860616a6)
-![image](https://github.com/ounaiissa/netal/assets/92831062/0bb6a6c7-6e2f-4b58-a3b1-bfaaf6f58062)
-![image](https://github.com/ounaiissa/netal/assets/92831062/394adacc-ba43-4513-9f33-41306c7ee9a6)
-![image](https://github.com/ounaiissa/netal/assets/92831062/f560fa09-c331-46b8-b1cb-3bbe347639f1)
-![image](https://github.com/ounaiissa/netal/assets/92831062/1636d954-a27f-4a85-8abd-b2b64b7a0f36)
-![image](https://github.com/ounaiissa/netal/assets/92831062/2c07d34d-2d76-40eb-9e11-5cfcc175632f)
-![image](https://github.com/ounaiissa/netal/assets/92831062/561dc284-229e-47c3-9116-925e34444d6e)
-![image](https://github.com/ounaiissa/netal/assets/92831062/d4140490-c0f7-4d74-8ea2-88991e44b8a8)
-![image](https://github.com/ounaiissa/netal/assets/92831062/79c6e030-ea71-4628-a221-7f16e24f40dc)
+![image](https://github.com/ounaiissa/netal/assets/92831062/44ba4124-8ffa-4f09-a258-5d05df3d00d6)
+![image](https://github.com/ounaiissa/netal/assets/92831062/50a01382-a3e9-4a2d-8b3b-da264bfed237)
+![image](https://github.com/ounaiissa/netal/assets/92831062/e624090b-9ca9-47a0-b2ca-867e83dd1a00)
+![image](https://github.com/ounaiissa/netal/assets/92831062/2d20dc8e-baba-456d-9e9c-616d40737d7b)
+![image](https://github.com/ounaiissa/netal/assets/92831062/8f06593b-ae80-4734-8702-c0e2b345738a)
+![image](https://github.com/ounaiissa/netal/assets/92831062/d8da504f-d2bb-4246-8bc2-923adb207a29)
+![image](https://github.com/ounaiissa/netal/assets/92831062/6272162a-8aa0-4c8b-8f6a-57222f8b35d2)
 
+![image](https://github.com/ounaiissa/netal/assets/92831062/88ea8e81-c81f-43f5-8733-4b39fd14e63b)
+![image](https://github.com/ounaiissa/netal/assets/92831062/7347b0c3-e0a1-46e6-8360-a8037622fb97)
+![image](https://github.com/ounaiissa/netal/assets/92831062/d6953c2b-fbd0-4362-aea8-b388eec7f014)
+![image](https://github.com/ounaiissa/netal/assets/92831062/172b258e-de1f-45ed-81c7-463f65450dbf)
+![image](https://github.com/ounaiissa/netal/assets/92831062/ce45cf26-a865-489c-8580-e7751ad1a5b0)
+![image](https://github.com/ounaiissa/netal/assets/92831062/2af46068-73b8-4b25-8467-7c04d9e3c28b)
+![image](https://github.com/ounaiissa/netal/assets/92831062/afdd118d-29e9-4960-8fbe-664accc3a431)
+![image](https://github.com/ounaiissa/netal/assets/92831062/a4265301-bd19-4583-9c85-7dd452ff1bb4)
 
 
 

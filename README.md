@@ -1,3 +1,27 @@
+# netal
+première version (non terminée)
+une application web conçue comme une plateforme pour les développeurs et les designers. Les utilisateurs peuvent créer des comptes, télécharger leur portfolio/CV, participer à des chatrooms publics ou privés spécifiques aux développeurs ou aux designers, et échanger des messages en privé. Cette plateforme vise également à aider les entreprises ou les agences digitales à trouver des développeurs ou des designers en leur permettant de publier leurs offres d'emploi, auxquelles les développeurs et designers peuvent postuler.
+
+
+![image](https://github.com/ounaiissa/netal/assets/92831062/c2a698d7-799f-4b95-b87c-b79022b64f39)
+![image](https://github.com/ounaiissa/netal/assets/92831062/7131a118-aaec-4d28-a00d-c7168ceede50)
+![image](https://github.com/ounaiissa/netal/assets/92831062/7d02d6d1-4ae6-4ddb-a7ab-ffa5a521d7e1)
+![image](https://github.com/ounaiissa/netal/assets/92831062/8cd03e85-fc7f-4d80-81a9-92f0860616a6)
+![image](https://github.com/ounaiissa/netal/assets/92831062/0bb6a6c7-6e2f-4b58-a3b1-bfaaf6f58062)
+![image](https://github.com/ounaiissa/netal/assets/92831062/394adacc-ba43-4513-9f33-41306c7ee9a6)
+![image](https://github.com/ounaiissa/netal/assets/92831062/f560fa09-c331-46b8-b1cb-3bbe347639f1)
+![image](https://github.com/ounaiissa/netal/assets/92831062/1636d954-a27f-4a85-8abd-b2b64b7a0f36)
+![image](https://github.com/ounaiissa/netal/assets/92831062/2c07d34d-2d76-40eb-9e11-5cfcc175632f)
+![image](https://github.com/ounaiissa/netal/assets/92831062/561dc284-229e-47c3-9116-925e34444d6e)
+![image](https://github.com/ounaiissa/netal/assets/92831062/d4140490-c0f7-4d74-8ea2-88991e44b8a8)
+![image](https://github.com/ounaiissa/netal/assets/92831062/79c6e030-ea71-4628-a221-7f16e24f40dc)
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

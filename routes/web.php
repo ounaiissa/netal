@@ -81,6 +81,9 @@ Route::get('/components/buttons', function () {
     return Inertia::render('Components/Buttons');
 })->middleware(['auth', 'verified'])->name('components.buttons');
 
+Route::get('/about', function () {
+    return \Inertia\Inertia::render('WelcomeComp/About');
+})->name('about');
 
 Route::get('/chat', function () {
     return \Inertia\Inertia::render('Chat/ChatContainer');

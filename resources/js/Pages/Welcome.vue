@@ -95,7 +95,7 @@ const closeNav = () => {
                                 <Link  href="/" class="text-sm common-span ">
                                     Home
                                 </Link>
-                                <Link  href="#footer" class="text-sm common-span ">
+                                <Link  href="/about" class="text-sm common-span ">
                                     About
                                 </Link>
                                 <Link  href="#jobboard" class="text-sm common-span ">
@@ -396,6 +396,25 @@ const closeNav = () => {
   </div>
 </div>
 
+
+<!-- newsletter -->
+<div class="flex h-full justify-between py-32 px-9" style="background-color: #25344b;">
+    <div class="text-white w-[600px]" style="font-size: 50px; font-weight: 600;">
+        <p>Subscribe to our Newsletter !</p>
+    </div>
+
+<div class="flex w-[400px] h-[20px] items-center">
+    <!-- <input style="border-bottom: #e6e8eb solid 1px;" value="email@example.com" /> -->
+
+    <v-text-field
+      label="email@example.com"
+      hide-details="auto"
+    ></v-text-field>
+
+
+    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
+</div>
+</div>
 <!--  -->
     <div>
  <footer class="footer">

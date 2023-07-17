@@ -10,9 +10,11 @@
     "@inertiajs/progress": "^0.2.7",
     "@vue/cli-service": "^4.5.19",
     "@vue/runtime-dom": "^3.3.4",
+    "countup.js": "^2.7.0",
     "laravel-echo": "^1.15.1",
     "pusher-js": "^8.0.2",
     "vue-carousel": "^0.18.0",
+    "vue-countup-v2": "^4.0.0",
     "vue-router": "^4.2.2",
     "vuetify": "^3.3.3",
     "vuex": "^4.0.2"
